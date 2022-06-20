@@ -1,6 +1,7 @@
 <template>
   <div v-if="!loading">
     <base-title :title-text='title' :data-date='dataDate'/>
+    <base-data-box :stats='stats' />
   </div>
   <loader v-else/>
 </template>
@@ -8,12 +9,14 @@
 <script>
 import BaseTitle from '../components/BaseTitle.vue';
 import Loader from '../components/Loader.vue';
+import BaseDataBox from '../components/BaseDataBox.vue';
 
 export default {
   //name: 'HomeView',
   components: {
     BaseTitle,
-    Loader
+    Loader,
+    BaseDataBox
   },
   data(){
     return {
