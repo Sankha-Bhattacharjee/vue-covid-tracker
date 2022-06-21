@@ -4,19 +4,22 @@
     <base-data-box :stats='stats' />
   </div>
   <loader v-else/>
+  <countries-select :countries="countries"/>
 </template>
 
 <script>
 import BaseTitle from '../components/BaseTitle.vue';
 import Loader from '../components/Loader.vue';
 import BaseDataBox from '../components/BaseDataBox.vue';
+import CountriesSelect from '../components/CountriesSelect.vue';
 
 export default {
   //name: 'HomeView',
   components: {
     BaseTitle,
     Loader,
-    BaseDataBox
+    BaseDataBox,
+    CountriesSelect
   },
   data(){
     return {

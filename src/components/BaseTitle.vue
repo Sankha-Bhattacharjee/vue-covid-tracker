@@ -1,6 +1,8 @@
 <template>
-  <div>{{ titleText }}</div>
-  <div>{{ timestamp }}</div>
+<section class="base-title">
+    <div>{{ titleText }}</div>
+    <div>{{ timestamp }}</div>
+  </section>
 </template>
 
 <script>
@@ -18,4 +20,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.base-title{
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+</style>

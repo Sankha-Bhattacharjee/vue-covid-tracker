@@ -1,50 +1,53 @@
 <template>
-    <div>
-        <!-- Cases -->
-        <h3>Cases</h3>
-        <div>
-            <span>New:</span>
-            {{newConfirmCases}}
-        </div>
-        <div>
-            <span>Total:</span>
-            {{totalCases}}
-        </div>
-        <!-- Deaths -->
-        <h3>Deaths</h3>
-        <div>
-            <span>New:</span>
-            {{newConfirmDeathss}}
-        </div>
-        <div>
-            <span>Total:</span>
-            {{totalDeaths}}
-        </div>
-    </div>
+  <div class="data-container">
+    <!-- Cases -->
+    <data-box box-title="Cases" :new-cases="newConfirmCases" :total-cases="totalCases"/>
+    <!-- Deaths -->
+    <data-box box-title="Deaths" :new-cases="newConfirmDeaths" :total-cases="totalDeaths"/>
+  </div>
 </template>
 
 <script>
+import DataBox from "./DataBox.vue";
 export default {
-    props: ['stats'],
-    computed:{
-        newConfirmCases(){
-            return this.formatNumber(this.stats.NewConfirmed);
-        },
-        totalCases(){
-            return this.formatNumber(this.stats.TotalConfirmed);
-        },
-        newConfirmDeaths(){
-            return this.formatNumber(this.stats.NewDeaths);
-        },
-        totalDeaths(){
-            return this.formatNumber(this.stats.TotalDeaths);
-        }
+  props: ["stats"],
+  components: {
+    DataBox,
+  },
+  computed: {
+    newConfirmCases() {
+      return this.formatNumber(this.stats.NewConfirmed);
     },
-    methods:{
-        formatNumber(num){
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
-        }
+    totalCases() {
+      return this.formatNumber(this.stats.TotalConfirmed);
     },
-
-}
+    newConfirmDeaths() {
+      return this.formatNumber(this.stats.NewDeaths);
+    },
+    totalDeaths() {
+      return this.formatNumber(this.stats.TotalDeaths);
+    },
+  },
+  methods: {
+    formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+  },
+};
 </script>
+
+<style scoped>
+.data-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 720px) {
+  .data-container {
+    grid-template-columns: auto;
+  }
+}
+</style>
