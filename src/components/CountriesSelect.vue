@@ -1,5 +1,5 @@
 <template>
-  <select v-model="selected" class="country-dropdown" @click="onCountrySelect">
+  <select v-model="selected" class="country-dropdown" @change="onCountrySelect">
     <option value="0" selected disabled>Select Country</option>
     <option
       v-for="country in countries"
@@ -13,18 +13,22 @@
 
 <script>
 export default {
-  props: ["countries"],
-  emits:['get-country'],
+  props: ['countries'],
+  emits:['get-country','get-history'],
   data() {
     return {
       selected: "",
+      selectHistory:[],
     };
   },
   methods:{
       onCountrySelect(){
-          const country = this.countries.find((item) => item.ID === this.selected);
+          const country = this.countries.find((item) => item.ID === this.selected);         
           console.log(country);
           if(country){
+            this.selectHistory.push(country.Country);
+            console.log('history',this.selectHistory);
+            this.$emit('get-history',this.selectHistory);
             this.$emit('get-country',country);
           }
       }

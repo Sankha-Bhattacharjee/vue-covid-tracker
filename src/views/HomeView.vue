@@ -2,7 +2,8 @@
   <div v-if="!loading">
     <base-title :title-text='title' :data-date='dataDate'/>
     <base-data-box :stats='stats' />
-    <countries-select :countries="countries" @get-country="getCountryData"/>
+    <select-history :lastFiveHistory='getLastFiveHistory'/>
+    <countries-select :countries="countries" @get-country="getCountryData" @get-history="getHistoryData"/>
     <base-button v-if="showClearButton" @click="clearCountryData"></base-button>
   </div>
   <loader v-else/>
@@ -15,6 +16,7 @@ import Loader from '../components/Loader.vue';
 import BaseDataBox from '../components/BaseDataBox.vue';
 import CountriesSelect from '../components/CountriesSelect.vue';
 import BaseButton from '../components/BaseButton.vue';
+import SelectHistory from '../components/SelectHistory.vue';
 
 export default {
   //name: 'HomeView',
@@ -23,7 +25,8 @@ export default {
     Loader,
     BaseDataBox,
     CountriesSelect,
-    BaseButton
+    BaseButton,
+    SelectHistory
   },
   data(){
     return {
@@ -31,12 +34,16 @@ export default {
       title: 'Global',
       dataDate:'',
       stats: {},
-      countries: []
+      countries: [],
+      history: [],
     }
   },
   computed:{
     showClearButton(){
       return this.title !== 'Global';
+    },
+    getLastFiveHistory(){
+      return this.history.length < 5 ? this.history : this.history.splice(0,5);
     }
   },
   methods:{
@@ -65,7 +72,11 @@ export default {
       this.dataDate = data.Date;
       this.stats = data.Global;
       this.loading = false;
-    }
+    },
+    getHistoryData(historyData){
+      console.log('historydata',historyData);
+      this.history = historyData;
+    },
   },
   async created(){
     console.log('created');
