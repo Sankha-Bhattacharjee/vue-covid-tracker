@@ -2,9 +2,9 @@
   <div v-if="!loading">
     <base-title :title-text='title' :data-date='dataDate'/>
     <base-data-box :stats='stats' />
-    <select-history :lastFiveHistory='getLastFiveHistory'/>
+    <select-history v-if="showHistory" :lastFiveHistory='getLastFiveHistory'/>
     <countries-select :countries="countries" @get-country="getCountryData" @get-history="getHistoryData"/>
-    <base-button v-if="showClearButton" @click="clearCountryData"></base-button>
+    <base-button v-if="showClearButton" @click="clearCountryDataAndHistory" button-title="Clear"/>
   </div>
   <loader v-else/>
   
@@ -36,6 +36,7 @@ export default {
       stats: {},
       countries: [],
       history: [],
+      showHistory: false,
     }
   },
   computed:{
@@ -43,7 +44,8 @@ export default {
       return this.title !== 'Global';
     },
     getLastFiveHistory(){
-      return this.history.length < 5 ? this.history : this.history.splice(0,5);
+      const historyLength = this.history.length;
+      return historyLength < 5 ? this.history : this.history.slice(historyLength - 5);
     }
   },
   methods:{
@@ -61,10 +63,10 @@ export default {
         'NewDeaths':country.NewDeaths,
         'TotalDeaths':country.TotalDeaths
       }
-      console.log(countryStats)
+      //console.log(countryStats)
       this.stats = countryStats;
     },
-    async clearCountryData(){
+    async clearCountryDataAndHistory(){
       this.loading = true;
 
       const data = await this.fetchData();
@@ -72,9 +74,12 @@ export default {
       this.dataDate = data.Date;
       this.stats = data.Global;
       this.loading = false;
+      
+      this.showHistory = false;
     },
     getHistoryData(historyData){
       console.log('historydata',historyData);
+      this.showHistory = true;
       this.history = historyData;
     },
   },

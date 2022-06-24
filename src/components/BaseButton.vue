@@ -1,11 +1,11 @@
 <template>
-    <button class="clear-buttton">Clear Country</button>
+    <button class="clear-buttton">{{buttonTitle}}</button>
 </template>
 
 <script>
 
 export default {
-
+    props: ['buttonTitle']
 }
 </script>
 
