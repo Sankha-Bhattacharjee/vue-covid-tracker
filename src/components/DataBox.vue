@@ -2,12 +2,12 @@
   <section class="data-item">
     <h3 class="box-title">{{ boxTitle }}</h3>
     <div>
-      <span>New:</span>
-      {{ newCases }}
+      <span>New : </span>
+      <strong>{{ newCases }}</strong>
     </div>
     <div>
-      <span>Total:</span>
-      {{ totalCases }}
+      <span>Total : </span>
+      <strong>{{ totalCases }}</strong>
     </div>
   </section>
 </template>
@@ -35,7 +35,7 @@ export default {
 }
 span{
     font-size: 20px;
-    color: white;
+    color: rgb(232, 215, 243);
     font-weight: bold;
 }
 </style>

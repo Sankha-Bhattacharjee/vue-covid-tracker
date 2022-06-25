@@ -3,7 +3,7 @@
     <!-- Cases -->
     <data-box box-title="Cases" :new-cases="newConfirmCases" :total-cases="totalCases"/>
     <!-- Deaths -->
-    <data-box box-title="Deaths" :new-cases="newConfirmDeaths" :total-cases="totalDeaths"/>
+    <data-box box-title="Mortality" :new-cases="newConfirmDeaths" :total-cases="totalDeaths"/>
   </div>
 </template>
 

@@ -1,5 +1,6 @@
 <template>
     <div class="history-container">
+        <span class="history-label"><em>Recent Searches</em></span>
         <span v-for="history in historyList" :key="history" class="history">{{history}}</span>
     </div>
 </template>
@@ -20,7 +21,7 @@ export default {
 <style scoped>
 .history-container{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto;
     justify-content: left;
     align-items: center;   
     max-width: 50%;
@@ -32,5 +33,10 @@ export default {
     border-radius: 5px;
     padding: 5px;
     margin-top: 10px;
+}
+.history-label{
+    font-size: 1.2em;
+    color: rgb(95, 82, 82);
+    padding: 3px;
 }
 </style>
