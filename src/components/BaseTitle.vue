@@ -26,4 +26,10 @@ export default {
   padding-bottom: 20px;
   font-size: 20px;
 }
+@media only screen and (max-width: 480px){
+  .base-title{
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
 </style>

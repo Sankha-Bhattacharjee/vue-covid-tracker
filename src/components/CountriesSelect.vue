@@ -63,4 +63,26 @@ label{
   margin: 20px auto;
   box-shadow: 3px 3px 3px grey;
 }
+@media only screen and (max-width: 768px){
+  #county-select-section{
+    max-width: 70%;
+  }
+   .country-dropdown{
+     width: 50%;
+   }
+   label{
+     font-size: 1.2em;
+   }
+}
+@media only screen and (max-width: 480px){
+label{
+     font-size: 0.9em;
+   }
+   .country-dropdown{
+     width: 70%;
+   }
+   #county-select-section{
+    max-width: 100%;
+  }
+}
 </style>

@@ -45,7 +45,7 @@ export default {
   gap: 10px;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 480px) {
   .data-container {
     grid-template-columns: auto;
   }

@@ -26,4 +26,9 @@ export default {
     background-color: rgb(133, 82, 180);
     color: black;
 }
+@media only screen and (max-width: 480px){
+.clear-buttton{
+    width: 30%;
+}
+}
 </style>
