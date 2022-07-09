@@ -27,10 +27,10 @@ export default {
   methods:{
       onCountrySelect(){
           const country = this.countries.find((item) => item.ID === this.selected);         
-          console.log(country);
+          //console.log(country);
           if(country){
             this.selectHistory.push(country.Country);
-            console.log('history',this.selectHistory);
+            //console.log('history',this.selectHistory);
             this.$emit('get-history',this.selectHistory);
             this.$emit('get-country',country);
           }

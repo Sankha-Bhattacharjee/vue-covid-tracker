@@ -78,20 +78,20 @@ export default {
       this.showHistory = false;
     },
     getHistoryData(historyData){
-      console.log('historydata',historyData);
+      //console.log('historydata',historyData);
       this.showHistory = true;
       this.history = historyData;
     },
   },
   async created(){
-    console.log('created');
+    //console.log('created');
     const data = await this.fetchData();
     
     this.dataDate = data.Date;
     this.stats = data.Global;
     this.countries = data.Countries;
     this.loading = false;
-    console.log(data.Countries);
+   //console.log(data.Countries);
 
   }
 }

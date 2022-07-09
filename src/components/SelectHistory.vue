@@ -11,7 +11,7 @@ export default {
     props:['lastFiveHistory'],
     computed:{
         historyList(){
-            console.log('lastFiveHistory',this.lastFiveHistory)
+            //console.log('lastFiveHistory',this.lastFiveHistory)
             return this.lastFiveHistory;
         }
     }
